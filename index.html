@@ -1,36 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+
   <title>Frontend Mentor | Article preview component</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
   </style>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    let shareOpen = false;
+    document.addEventListener("DOMContentLoaded", (event) => {
+      const shareButton = document.querySelector('#share');
+      shareButton.addEventListener('click', () => {
+        const bottomBar = document.querySelector('#bottomBar').children[0];
+        const tooltip = document.querySelector("#tooltip");
+        if (screen.width < 768) {
+          if (!shareOpen) {
+            // Toggle classes
+            let classesToAddToRoot = ['bg-darkGrayishBlue'];
+            bottomBar.classList.add(...classesToAddToRoot);
+            bottomBar.children[0].classList.add('md:hidden');
+            bottomBar.children[0].classList.remove('hidden');
+            bottomBar.children[1].classList.add('hidden');
+            bottomBar.children[2].classList.add('hidden');
+            shareOpen = true;
+          } else {
+            // Toggle classes
+            let classesToRemoveFromRoot = ['bg-darkGrayishBlue'];
+            bottomBar.classList.remove(...classesToRemoveFromRoot);
+            bottomBar.children[0].classList.add('md:hidden');
+            bottomBar.children[0].classList.add('hidden');
+            bottomBar.children[1].classList.remove('hidden');
+            bottomBar.children[2].classList.remove('hidden');
+            shareOpen = false;
+          }
+        } else {
+          if(!shareOpen) {
+            tooltip.classList.remove('hidden');
+            shareOpen = true;
+          } else {
+            tooltip.classList.add('hidden');
+            shareOpen = false;
+          }
+        }
+      });
+    });
+  </script>
 </head>
-<body>
 
-  Shift the overall look and feel by adding these wonderful 
-  touches to furniture in your home
+<body class="font-body text-base13 bg-lightGrayishBlue">
+  <div class="min-h-screen bg-lightGrayishBlue flex flex-col justify-center items-center relative">
+    <div class="bg-white rounded-2xl relative block h-card w-card md:lgSizeOfCard">
+      <div class="absolute inset-x-0 top-0 h-2/5 overflow-hidden md:inset-y-0 md:left-0 md:h-full md:w-1/2 md:top-auto rounded-tl-2xl rounded-bl-2xl">
+        <img src="images/drawers.jpg" alt="drawers" class="md:h-full lg:h-auto object-cover">
+      </div>
+      <div class="flex flex-col px-6 pt-6 mt-52 h-3/5 relative md:mt-auto md:pt-7 lg:pt-16 md:marginLeft">
+        <div class="text-darkGrayishBlue font-extrabold text-base">
+          Shift the overall look and feel by adding these wonderful
+          touches to furniture in your home
+        </div>
+        <div class="text-grayishBlue font-xm mt-3 tracking-wide md:mt-4">
+          Ever been in a room and felt like something was missing? Perhaps
+          it felt slightly bare and uninviting. I’ve got some simple tips
+          to help you make any room feel complete.
+        </div>
+      </div>
+      <footer
+        class="absolute h-18 bottom-0 items-center transition ease-in-out duration-900 w-full md:relative md:bottom-auto"
+        id="bottomBar">
+        <div class="flex flex-row justify-between items-center px-6 py-4 md:pt-10 md:marginLeft  md:mt-7 lg:mt-6">
+          <div class="text-white flex flex-row justify-between items-center w-3/4 hidden md:hidden">
+            <div class="uppercase text-white leading-relaxed tracking-widest opacity-60 font-bold">Share</div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+              <path fill="currentColor"
+                d="M18.896 0H1.104C.494 0 0 .494 0 1.104v17.793C0 19.506.494 20 1.104 20h9.58v-7.745H8.076V9.237h2.606V7.01c0-2.583 1.578-3.99 3.883-3.99 1.104 0 2.052.082 2.329.119v2.7h-1.598c-1.254 0-1.496.597-1.496 1.47v1.928h2.989l-.39 3.018h-2.6V20h5.098c.608 0 1.102-.494 1.102-1.104V1.104C20 .494 19.506 0 18.896 0z" />
+              </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+              <path fill="currentColor"
+                d="M20 2.172a8.192 8.192 0 01-2.357.646 4.11 4.11 0 001.804-2.27 8.22 8.22 0 01-2.605.996A4.096 4.096 0 0013.847.248c-2.65 0-4.596 2.472-3.998 5.037A11.648 11.648 0 011.392 1a4.109 4.109 0 001.27 5.478 4.086 4.086 0 01-1.858-.513c-.045 1.9 1.318 3.679 3.291 4.075a4.113 4.113 0 01-1.853.07 4.106 4.106 0 003.833 2.849A8.25 8.25 0 010 14.658a11.616 11.616 0 006.29 1.843c7.618 0 11.922-6.434 11.663-12.205A8.354 8.354 0 0020 2.172z" />
+              </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+              <path fill="currentColor"
+                d="M10 0C4.478 0 0 4.477 0 10c0 4.237 2.636 7.855 6.356 9.312-.088-.791-.167-2.005.035-2.868.182-.78 1.172-4.97 1.172-4.97s-.299-.6-.299-1.486c0-1.39.806-2.428 1.81-2.428.852 0 1.264.64 1.264 1.408 0 .858-.545 2.14-.828 3.33-.236.995.5 1.807 1.48 1.807 1.778 0 3.144-1.874 3.144-4.58 0-2.393-1.72-4.068-4.177-4.068-2.845 0-4.515 2.135-4.515 4.34 0 .859.331 1.781.745 2.281a.3.3 0 01.069.288l-.278 1.133c-.044.183-.145.223-.335.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.173 6.22-5.19 6.22-1.013 0-1.965-.525-2.291-1.148l-.623 2.378c-.226.869-.835 1.958-1.244 2.621.937.29 1.931.446 2.962.446 5.522 0 10-4.477 10-10S15.522 0 10 0z" />
+              </svg>
+          </div>
 
-  Ever been in a room and felt like something was missing? Perhaps 
-  it felt slightly bare and uninviting. I’ve got some simple tips 
-  to help you make any room feel complete.
+          <img src="images/avatar-michelle.jpg" alt="Michelle" class="rounded-full w-10">
+          <div class="flex flex-col justify-around items-start w-2/3">
+            <div class="text-left pl-2 text-darkGrayishBlue font-extrabold">
+              Michelle Appleton
+            </div>
+            <div class="text-left pl-2 text-grayishBlue">
+              28 Jun 2020
+            </div>
+          </div>
+          <button
+            class="relative rounded-full bg-lightGrayishBlue text-darkGrayishBlue w-9 h-9 flex justify-center outline-none focus:outline-none items-center focus:bg-grayishBlue focus:text-white"
+            id="share">
+            <div class="absolute text-white -top-20 -left-26 transition ease-in-out duration-900  hidden" id="tooltip">
+              <div class="flex flex-col justify-center items-center">
+                <div class=" w-64 h-14 rounded-xl bg-darkGrayishBlue flex justify-center items-center">
+                    <div class="text-white flex flex-row justify-between  w-3/4 items-center">
+                      <div class="uppercase text-white leading-relaxed tracking-widest opacity-60 font-bold">Share</div>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                        <path fill="currentColor"
+                          d="M18.896 0H1.104C.494 0 0 .494 0 1.104v17.793C0 19.506.494 20 1.104 20h9.58v-7.745H8.076V9.237h2.606V7.01c0-2.583 1.578-3.99 3.883-3.99 1.104 0 2.052.082 2.329.119v2.7h-1.598c-1.254 0-1.496.597-1.496 1.47v1.928h2.989l-.39 3.018h-2.6V20h5.098c.608 0 1.102-.494 1.102-1.104V1.104C20 .494 19.506 0 18.896 0z" />
+                        </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                        <path fill="currentColor"
+                          d="M20 2.172a8.192 8.192 0 01-2.357.646 4.11 4.11 0 001.804-2.27 8.22 8.22 0 01-2.605.996A4.096 4.096 0 0013.847.248c-2.65 0-4.596 2.472-3.998 5.037A11.648 11.648 0 011.392 1a4.109 4.109 0 001.27 5.478 4.086 4.086 0 01-1.858-.513c-.045 1.9 1.318 3.679 3.291 4.075a4.113 4.113 0 01-1.853.07 4.106 4.106 0 003.833 2.849A8.25 8.25 0 010 14.658a11.616 11.616 0 006.29 1.843c7.618 0 11.922-6.434 11.663-12.205A8.354 8.354 0 0020 2.172z" />
+                        </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                        <path fill="currentColor"
+                          d="M10 0C4.478 0 0 4.477 0 10c0 4.237 2.636 7.855 6.356 9.312-.088-.791-.167-2.005.035-2.868.182-.78 1.172-4.97 1.172-4.97s-.299-.6-.299-1.486c0-1.39.806-2.428 1.81-2.428.852 0 1.264.64 1.264 1.408 0 .858-.545 2.14-.828 3.33-.236.995.5 1.807 1.48 1.807 1.778 0 3.144-1.874 3.144-4.58 0-2.393-1.72-4.068-4.177-4.068-2.845 0-4.515 2.135-4.515 4.34 0 .859.331 1.781.745 2.281a.3.3 0 01.069.288l-.278 1.133c-.044.183-.145.223-.335.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.173 6.22-5.19 6.22-1.013 0-1.965-.525-2.291-1.148l-.623 2.378c-.226.869-.835 1.958-1.244 2.621.937.29 1.931.446 2.962.446 5.522 0 10-4.477 10-10S15.522 0 10 0z" />
+                        </svg>
+                    </div>
+                </div>
+                <div style="width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 16px solid #48556a;"></div>
+              </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-center h-1/2 w-1/2">
+              <path fill="currentColor"
+                d="M15 6.495L8.766.014V3.88H7.441C3.33 3.88 0 7.039 0 10.936v2.049l.589-.612C2.59 10.294 5.422 9.11 8.39 9.11h.375v3.867L15 6.495z" />
+            </svg>
+          </button>
+        </div>
+      </footer>
+    </div>
+  </div>
 
-  Michelle Appleton
-  28 Jun 2020
-
-  Share
-  
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Nataraj Chakraborty</a>.
   </div>
 </body>
+
 </html>
