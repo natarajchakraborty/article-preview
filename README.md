@@ -16,11 +16,11 @@
 
 ![Mobile](./design/mobile-design.jpg)
 
-**Desktop Active Statespx**
+**Desktop Active States**
 
 ![desktop_active](./design/desktop-active-state.jpg)
 
 
-**Mobile Active Statespx**
+**Mobile Active States**
 
 ![mobile_active](./design/mobile-active-state.jpg)
