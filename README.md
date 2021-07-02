@@ -18,9 +18,9 @@
 
 **Desktop Active Statespx**
 
-![desktop_active](./design/desktop-active-states.jpg)
+![desktop_active](./design/desktop-active-state.jpg)
 
 
 **Mobile Active Statespx**
 
-![mobile_active](./design/mobile-active-states.jpg)
+![mobile_active](./design/mobile-active-state.jpg)
